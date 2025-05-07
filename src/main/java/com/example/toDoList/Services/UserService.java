@@ -2,7 +2,7 @@ package com.example.toDoList.Services;
 
 
 import com.example.toDoList.Model.UserEntity;
-import com.example.toDoList.UserDTO;
+import com.example.toDoList.DTO.UserDTO;
 
 import java.util.Optional;
 

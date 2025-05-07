@@ -1,11 +1,10 @@
 package com.example.toDoList.Controllers;
 
-import java.security.Principal;
 import java.util.Optional;
 
 import com.example.toDoList.Model.UserEntity;
 import com.example.toDoList.Services.UserService;
-import com.example.toDoList.UserDTO;
+import com.example.toDoList.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;

@@ -3,7 +3,7 @@ package com.example.toDoList.Services;
 
 import com.example.toDoList.Model.UserEntity;
 import com.example.toDoList.Repositories.UserRepository;
-import com.example.toDoList.UserDTO;
+import com.example.toDoList.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

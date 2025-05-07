@@ -1,4 +1,4 @@
-package com.example.toDoList;
+package com.example.toDoList.DTO;
 
 public class UserDTO {
 
