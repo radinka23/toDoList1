@@ -1,8 +1,11 @@
 package com.example.toDoList.Model;
 
+import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
-import java.util.Optional;
 
 @Entity
 @Table(name = "todo_items")
@@ -18,6 +21,10 @@ public class ItemEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @Column(name = "due_date")
+    private LocalDateTime dueDate;
 
     public Long getId() {
         return id;
@@ -57,6 +64,18 @@ public class ItemEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public LocalDateTime getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDateTime dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public boolean isOverdue() {
+        return this.dueDate != null && !this.completed && this.dueDate.isBefore(LocalDateTime.now());
     }
 }
 

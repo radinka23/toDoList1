@@ -60,6 +60,26 @@
             align-items: center;
         }
 
+        li.overdue {
+            border-left: 5px solid #3ee53e;
+            background-color: #fff5f5;
+        }
+
+        li.completed {
+            opacity: 0.7;
+            text-decoration: line-through;
+        }
+
+        .due-date {
+            font-size: 0.9em;
+            color: #4a5568;
+        }
+
+        .overdue-text {
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
         li span {
             flex: 1;
         }
@@ -75,22 +95,36 @@
 <form th:action="@{/todos/add}" method="post" th:object="${newItem}">
     <input type="text" th:field="*{title}" placeholder="Title" required />
     <input type="text" th:field="*{description}" placeholder="Description" />
+    
+    <label for="dueDate">Due Date:</label>
+    <input type="datetime-local" th:field="*{dueDate}" id="dueDate" />
+
     <button type="submit">Add</button>
 </form>
 
 <ul>
-    <li th:each="item : ${items}">
+    <li th:each="item : ${items}" 
+        th:class="${item.completed} ? 'completed' : (item.overdue ? 'overdue' : '')">
         <span>
             <strong th:text="${item.title}">Title</strong> -
-            <em th:text="${item.description}">Desc</em>
+            <em th:text="${item.description}">Desc</em> 
         </span>
+
+        <span class="due-date" th:if="${item.dueDate != null}">
+            <span th:if="${item.overdue}" class="overdue-text">OVERDUE - </span>
+            <span th:text="${#temporals.format(item.dueDate, 'yyyy-MM-dd')}"></span> - 
+            <span th:text="${#temporals.format(item.dueDate, 'HH:mm')}"></span>
+        </span>
+
         <form th:action="@{/todos/toggle/{id}(id=${item.id})}" method="post" style="display:inline">
             <button type="submit" th:text="${item.completed ? 'Undo' : 'Done'}"></button>
         </form>
+
         <form th:action="@{/todos/delete/{id}(id=${item.id})}" method="post" style="display:inline">
             <button type="submit">Delete</button>
         </form>
     </li>
 </ul>
+
 </body>
 </html>

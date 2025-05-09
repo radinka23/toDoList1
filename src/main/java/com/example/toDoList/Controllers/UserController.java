@@ -5,8 +5,6 @@ import java.util.Optional;
 import com.example.toDoList.Model.UserEntity;
 import com.example.toDoList.Services.UserService;
 import com.example.toDoList.DTO.UserDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
+    
     private final UserService userService;
 
     public UserController(UserService userService) {

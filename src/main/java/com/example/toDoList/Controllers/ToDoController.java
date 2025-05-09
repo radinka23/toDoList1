@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,12 +28,14 @@ public class ToDoController {
     public String viewToDos(Model model, Principal principal) {
         Optional<UserEntity> userOpt = userRepo.findByUsername(principal.getName());
         if (userOpt.isEmpty()) {
-            return "redirect:/login"; // or show error
+            return "redirect:/login"; 
         }
         UserEntity user = userOpt.get();
         List<ItemEntity> items = toDoService.getUserTasks(user);
         model.addAttribute("items", items);
         model.addAttribute("newItem", new ItemEntity());
+        model.addAttribute("currentTime", LocalDateTime.now());
+        
         return "todos";
     }
 
@@ -41,25 +44,26 @@ public class ToDoController {
     public String addToDo(@ModelAttribute ItemEntity item, Principal principal) {
         Optional<UserEntity> userOpt = userRepo.findByUsername(principal.getName());
         if (userOpt.isEmpty()) {
-            return "redirect:/login"; // or show an error page/message
+            return "redirect:/login";
         }
 
         UserEntity user = userOpt.get();
         item.setUser(user);
+
         toDoService.addTask(item);
         return "redirect:/todos";
     }
 
 
-    @PostMapping("/delete/{id}")
-    public String deleteToDo(@PathVariable Long id) {
-        toDoService.deleteTask(id);
-        return "redirect:/todos";
-    }
+        @PostMapping("/delete/{id}")
+        public String deleteToDo(@PathVariable Long id) {
+            toDoService.deleteTask(id);
+            return "redirect:/todos";
+        }
 
-    @PostMapping("/toggle/{id}")
-    public String toggleComplete(@PathVariable Long id) {
-        toDoService.toggleComplete(id);
-        return "redirect:/todos";
-    }
+        @PostMapping("/toggle/{id}")
+        public String toggleComplete(@PathVariable Long id) {
+            toDoService.toggleComplete(id);
+            return "redirect:/todos";
+        }
 }
