@@ -4,6 +4,9 @@ import java.util.Optional;
 
 import com.example.toDoList.Model.UserEntity;
 import com.example.toDoList.Services.UserService;
+
+import jakarta.servlet.http.HttpSession;
+
 import com.example.toDoList.DTO.UserDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +41,8 @@ public class UserController {
     }
 
     @GetMapping("/welcome")
-    public String welcome(Model model, UserDTO userDTO){
+    public String welcome(Model model, UserDTO userDTO, HttpSession session){
+        System.out.println(session.getId());
         model.addAttribute("user", userDTO);
         return "welcome";
     }
