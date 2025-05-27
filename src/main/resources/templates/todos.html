@@ -5,14 +5,47 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f3f4f6;
+            background: linear-gradient(to right, #fce4ec, #e8eaf6);
             padding: 40px;
             color: #333;
+        }
+          .layout {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        main {
+            flex: 1 1 650px;
+        }
+
+        aside {
+            flex: 0 0 250px;
+            background: #ffffff;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            font-size: 0.95em;
+            color: #333;
+            height: fit-content;
+            align-self: flex-start;
+        }
+
+        aside h2 {
+            margin-top: 0;
+            color: #6a1b9a;
+        }
+
+        aside p {
+            margin: 8px 0;
         }
 
         h1 {
             text-align: center;
-            color: #2d3748;
+            color: #6a1b9a;;
         }
 
         form {
@@ -32,7 +65,7 @@
         button {
             padding: 10px 15px;
             border: none;
-            background-color: #4a90e2;
+            background-color: #3182ce;
             color: white;
             border-radius: 5px;
             cursor: pointer;
@@ -61,11 +94,13 @@
         }
 
         li.overdue {
-            border-left: 5px solid #3ee53e;
-            background-color: #fff5f5;
+            background-color: #ffe0e0;
+            border-left-color: #e53e3e;
         }
 
         li.completed {
+            background-color: #d4f5e9;
+            border-left-color: #38a169;
             opacity: 0.7;
             text-decoration: line-through;
         }
@@ -87,44 +122,121 @@
         li form {
             margin-left: 10px;
         }
+
+
     </style>
+
 </head>
 <body>
-<h1>Your To-Do List</h1>
+<div id="motivational-quotes" style=" text-align: center;font-style: italic;color: #9c27b0; margin-bottom: 20px;font-weight: 500;font-size: 1em;font-family: 'Georgia', serif; padding: 8px 16px;border: 1.5px solid #9c27b0;border-radius: 10px;background: #f8e1f4; max-width: 500px;margin-left: auto;margin-right: auto;opacity: 1;transition: opacity 1s ease-in-out;"></div>
+<div class="layout">
+    <div id="notification" style="position: fixed;bottom: 30px;right: 30px;background-color: #4caf50;color: white;padding: 12px 20px;border-radius: 8px;box-shadow: 0 4px 6px rgba(0,0,0,0.2);opacity: 0;pointer-events: none;transition: opacity 0.5s ease;z-index: 1000;"></div>
 
-<form th:action="@{/todos/add}" method="post" th:object="${newItem}">
-    <input type="text" th:field="*{title}" placeholder="Title" required />
-    <input type="text" th:field="*{description}" placeholder="Description" />
-    
-    <label for="dueDate">Due Date:</label>
-    <input type="datetime-local" th:field="*{dueDate}" id="dueDate" />
+    <main>
+        <h1>Your To-Do List</h1>
 
-    <button type="submit">Add</button>
-</form>
-
-<ul>
-    <li th:each="item : ${items}" 
-        th:class="${item.completed} ? 'completed' : (item.overdue ? 'overdue' : '')">
-        <span>
-            <strong th:text="${item.title}">Title</strong> -
-            <em th:text="${item.description}">Desc</em> 
-        </span>
-
-        <span class="due-date" th:if="${item.dueDate != null}">
-            <span th:if="${item.overdue}" class="overdue-text">OVERDUE - </span>
-            <span th:text="${#temporals.format(item.dueDate, 'yyyy-MM-dd')}"></span> - 
-            <span th:text="${#temporals.format(item.dueDate, 'HH:mm')}"></span>
-        </span>
-
-        <form th:action="@{/todos/toggle/{id}(id=${item.id})}" method="post" style="display:inline">
-            <button type="submit" th:text="${item.completed ? 'Undo' : 'Done'}"></button>
+        <form th:action="@{/todos/add}" method="post" th:object="${newItem}">
+            <input type="text" th:field="*{title}" placeholder="Title" required />
+            <input type="text" th:field="*{description}" placeholder="Description" />
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <label for="dueDate">Due Date:</label>
+                <input type="datetime-local" th:field="*{dueDate}" id="dueDate" />
+            </div>
+            <button type="submit">Add</button>
         </form>
 
-        <form th:action="@{/todos/delete/{id}(id=${item.id})}" method="post" style="display:inline">
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+        <ul>
+            <li th:each="item : ${items}"
+                th:class="${item.completed} ? 'completed' : (item.overdue ? 'overdue' : '')">
+                <span>
+                    <strong th:text="${item.title}">Title</strong> -
+                    <em th:text="${item.description}">Desc</em>
+                </span>
+
+                <span class="due-date" th:if="${item.dueDate != null}">
+                    <span th:if="${item.overdue}" class="overdue-text">OVERDUE - </span>
+                    <span th:text="${#temporals.format(item.dueDate, 'yyyy-MM-dd')}"></span> -
+                    <span th:text="${#temporals.format(item.dueDate, 'HH:mm')}"></span>
+                </span>
+
+                <form th:action="@{/todos/toggle/{id}(id=${item.id})}" method="post" style="display:inline">
+                    <button type="submit" th:text="${item.completed ? 'Undo' : 'Done'}"></button>
+                </form>
+
+                <form th:action="@{/todos/delete/{id}(id=${item.id})}" method="post" style="display:inline">
+                    <button type="submit">Delete</button>
+                </form>
+
+                <form th:action="@{/todos/edit/{id}(id=${item.id})}" method="get" style="display:inline">
+                    <button type="submit">Edit</button>
+                </form>
+
+
+            </li>
+        </ul>
+    </main>
+
+    <aside>
+        <h2>📊 Статистика</h2>
+        <p>Общо задачи: <span th:text="${items.size()}">0</span></p>
+        <p>✔️ Завършени: <span th:text="${items.?[completed].size()}">0</span></p>
+        <p>⚠️ Просрочени: <span th:text="${items.?[overdue].size()}">0</span></p>
+    </aside>
+</div>
+
+
+<script>
+    const quotes = [
+        "Stay positive, work hard, make it happen.",
+        "Don't watch the clock; do what it does. Keep going.",
+        "Success is the sum of small efforts repeated day in and day out.",
+        "Your limitation—it’s only your imagination.",
+        "Push yourself, because no one else is going to do it for you.",
+        "Great things never come from comfort zones."
+    ];
+
+    const quotesDiv = document.getElementById('motivational-quotes');
+    let currentIndex = 0;
+
+    function showQuote(index) {
+        quotesDiv.style.opacity = 0;
+        setTimeout(() => {
+            quotesDiv.textContent = quotes[index];
+            quotesDiv.style.opacity = 1;
+        }, 1000);
+    }
+
+    showQuote(currentIndex);
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        showQuote(currentIndex);
+    }, 5000);
+</script>
+
+<script>
+    function showNotification(message, bgColor = '#4caf50') {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.style.backgroundColor = bgColor;
+        notification.style.opacity = '1';
+
+        setTimeout(() => {
+            notification.style.opacity = '0';
+        }, 3000);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('action') === 'added') {
+        showNotification('Задачата е добавена успешно!');
+    } else if (urlParams.get('action') === 'deleted') {
+        showNotification('Задачата беше изтрита.', '#f44336');
+    } else if (urlParams.get('action') === 'completed') {
+        showNotification('Задачата е отбелязана като завършена.');
+        } else if (urlParams.get('action') === 'edited') {
+    showNotification('Промените по задачата са запазени успешно!');
+    }
+</script>
+
 
 </body>
 </html>

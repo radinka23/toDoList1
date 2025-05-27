@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh;">
+<body style="font-family: Arial, sans-serif;
+             background: linear-gradient(to right, #a18cd1, #fbc2eb);
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             margin: 0;">
 
-<div style="background: white; padding: 20px; border-radius: 5px; box-shadow: 0px 0px 10px 0px #aaa; text-align: center; width: 300px;">
+
+<div style="background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px 0px #aaa;
+            text-align: center;
+            width: 350px;">
+
     <h2>Login</h2>
 
     <!-- Error message if login fails -->
@@ -15,13 +28,16 @@
     </div>
 
     <form th:action="@{/login}" method="post">
-        <label for="username" style="display: block; margin-top: 10px;">Username:</label>
-        <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; margin: 5px 0;">
+        <label for="username" style="display: block; margin-top: 10px; text-align: center;">Username:</label>
+        <input type="text" id="username" name="username" required style="width: 80%; padding: 8px; margin: 5px auto; display: block;">
 
-        <label for="password" style="display: block; margin-top: 10px;">Password:</label>
-        <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; margin: 5px 0;">
+        <label for="password" style="display: block; margin-top: 10px; text-align: center;">Password:</label>
+        <input type="password" id="password" name="password" required style="width: 80%; padding: 8px; margin: 5px auto; display: block;">
 
-        <button type="submit" style="background-color: #007bff; color: white; padding: 10px; border: none; cursor: pointer; width: 100%; margin-top: 15px;">Login</button>
+        <button type="submit" style="background-color: #007bff; color: white; padding: 10px; border: none;
+                       cursor: pointer; width: 80%; margin: 15px auto 0; display: block;">
+            Login
+        </button>
     </form>
 
     <p style="margin-top: 10px;">Don't have an account? <a th:href="@{/register}">Register here</a></p>

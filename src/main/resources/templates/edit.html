@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Task</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #b2ebf2, #f48fb1);
+
+    }
+
+    .form-container {
+        background: #ffffffdd;
+        padding: 40px 50px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        width: 420px;
+        max-width: 90vw;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 25px;
+        color: #444;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="text"], input[type="datetime-local"] {
+        width: 90%;
+        background-color: #fcfcfc;
+        padding: 14px 20px;
+        margin-top: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    input[type="text"]:focus, input[type="datetime-local"]:focus {
+        border-color: #f48fb1;
+        outline: none;
+        box-shadow: 0 0 8px rgba(244,143,177,0.5);
+    }
+
+    label {
+        width: 90%;
+        margin-top: 15px;
+        font-weight: 600;
+        color: #666;
+        text-align: left;
+        user-select: none;
+    }
+
+    button {
+        width: 90%;
+        padding: 14px;
+        margin-top: 25px;
+        background: linear-gradient(45deg, #f48fb1, #f8bbd0);
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        box-shadow: 0 4px 15px rgba(244,143,177,0.4);
+    }
+
+    button:hover {
+        background: linear-gradient(45deg, #f8bbd0, #f48fb1);
+        box-shadow: 0 6px 20px rgba(244,143,177,0.7);
+    }
+
+    ::placeholder {
+        color: #bbb;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <h2>Edit Task</h2>
+  <form th:action="@{/todos/update/{id}(id=${item.id})}" th:object="${item}" method="post">
+    <input type="text" th:field="*{title}" placeholder="Title" required />
+    <input type="text" th:field="*{description}" placeholder="Description" />
+    <label for="dueDate">Due Date:</label>
+    <input id="dueDate" type="datetime-local" th:field="*{dueDate}" />
+    <button type="submit">Save Changes</button>
+  </form>
+</div>
+</body>
+</html>

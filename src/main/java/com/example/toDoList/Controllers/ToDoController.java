@@ -51,19 +51,34 @@ public class ToDoController {
         item.setUser(user);
 
         toDoService.addTask(item);
-        return "redirect:/todos";
+        return "redirect:/todos?action=added";
     }
 
 
         @PostMapping("/delete/{id}")
         public String deleteToDo(@PathVariable Long id) {
             toDoService.deleteTask(id);
-            return "redirect:/todos";
+            return "redirect:/todos?action=deleted";
+
         }
 
         @PostMapping("/toggle/{id}")
         public String toggleComplete(@PathVariable Long id) {
             toDoService.toggleComplete(id);
-            return "redirect:/todos";
+            return "redirect:/todos?action=completed";
+
         }
+    @GetMapping("/edit/{id}")
+    public String editTask(@PathVariable Long id, Model model) {
+        ItemEntity item = toDoService.getById(id);
+        model.addAttribute("item", item);
+        return "edit";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateTask(@PathVariable Long id, @ModelAttribute ItemEntity updatedItem) {
+        toDoService.updateTask(id, updatedItem);
+        return "redirect:/todos?action=edited";
+
+    }
 }
