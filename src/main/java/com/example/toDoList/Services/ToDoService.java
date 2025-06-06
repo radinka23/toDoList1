@@ -30,10 +30,10 @@ public class ToDoService {
         item.setCompleted(!item.isCompleted());
         toDoRepo.save(item);
     }
+
     public ItemEntity getById(Long id) {
         return toDoRepo.findById(id).orElseThrow();
     }
-
 
     public void updateTask(Long id, ItemEntity updatedItem) {
         ItemEntity original = toDoRepo.findById(id).orElseThrow();

@@ -55,19 +55,19 @@ public class ToDoController {
     }
 
 
-        @PostMapping("/delete/{id}")
-        public String deleteToDo(@PathVariable Long id) {
-            toDoService.deleteTask(id);
-            return "redirect:/todos?action=deleted";
+    @PostMapping("/delete/{id}")
+    public String deleteToDo(@PathVariable Long id) {
+        toDoService.deleteTask(id);
+        return "redirect:/todos?action=deleted";
 
-        }
+    }
 
-        @PostMapping("/toggle/{id}")
-        public String toggleComplete(@PathVariable Long id) {
-            toDoService.toggleComplete(id);
-            return "redirect:/todos?action=completed";
+    @PostMapping("/toggle/{id}")
+    public String toggleComplete(@PathVariable Long id) {
+        toDoService.toggleComplete(id);
+        return "redirect:/todos?action=completed";
+    }
 
-        }
     @GetMapping("/edit/{id}")
     public String editTask(@PathVariable Long id, Model model) {
         ItemEntity item = toDoService.getById(id);

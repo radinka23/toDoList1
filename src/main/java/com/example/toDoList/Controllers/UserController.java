@@ -40,12 +40,12 @@ public class UserController {
         return "register";
     }
 
-    @GetMapping("/welcome")
-    public String welcome(Model model, UserDTO userDTO, HttpSession session){
-        System.out.println(session.getId());
-        model.addAttribute("user", userDTO);
-        return "welcome";
-    }
+//    @GetMapping("/welcome")
+//    public String welcome(Model model, UserDTO userDTO, HttpSession session){
+//        System.out.println(session.getId());
+//        model.addAttribute("user", userDTO);
+//        return "welcome";
+//    }
 
     @PostMapping("/register")
     public String registerSava(@ModelAttribute("user") UserDTO userDTO, Model model) {
