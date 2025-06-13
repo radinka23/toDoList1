@@ -177,10 +177,10 @@
     </main>
 
     <aside>
-        <h2>📊 Статистика</h2>
-        <p>Общо задачи: <span th:text="${items.size()}">0</span></p>
-        <p>✔️ Завършени: <span th:text="${items.?[completed].size()}">0</span></p>
-        <p>⚠️ Просрочени: <span th:text="${items.?[overdue].size()}">0</span></p>
+        <h2>Statistics:</h2>
+        <p>Total tasks: <span th:text="${items.size()}">0</span></p>
+        <p>Completed: <span th:text="${items.?[completed].size()}">0</span></p>
+        <p>Overdue: <span th:text="${items.?[overdue].size()}">0</span></p>
     </aside>
 </div>
 
@@ -192,7 +192,11 @@
         "Success is the sum of small efforts repeated day in and day out.",
         "Your limitation—it’s only your imagination.",
         "Push yourself, because no one else is going to do it for you.",
-        "Great things never come from comfort zones."
+        "Great things never come from comfort zones.",
+        "The best way to get started is to quit talking and begin doing.",
+        "Don't let yesterday take up too much of today.",
+        "Success doesn't come to you. You go to it.",
+        "Your time is limited, so don’t waste it living someone else’s life."
     ];
 
     const quotesDiv = document.getElementById('motivational-quotes');
@@ -227,13 +231,13 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('action') === 'added') {
-        showNotification('Задачата е добавена успешно!');
+        showNotification('The task has been added successfully!');
     } else if (urlParams.get('action') === 'deleted') {
-        showNotification('Задачата беше изтрита.', '#f44336');
+        showNotification('The task was deleted.', '#f44336');
     } else if (urlParams.get('action') === 'completed') {
-        showNotification('Задачата е отбелязана като завършена.');
+        showNotification('The task has been marked as completed.');
         } else if (urlParams.get('action') === 'edited') {
-    showNotification('Промените по задачата са запазени успешно!');
+    showNotification('Task changes saved successfully!');
     }
 </script>
 
