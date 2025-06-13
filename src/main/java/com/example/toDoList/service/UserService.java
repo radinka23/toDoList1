@@ -1,7 +1,7 @@
-package com.example.toDoList.Services;
+package com.example.toDoList.service;
 
 
-import com.example.toDoList.Model.UserEntity;
+import com.example.toDoList.model.UserEntity;
 import com.example.toDoList.DTO.UserDTO;
 
 import java.util.Optional;

@@ -1,8 +1,8 @@
-package com.example.toDoList.Services;
+package com.example.toDoList.service;
 
 
-import com.example.toDoList.Model.UserEntity;
-import com.example.toDoList.Repositories.UserRepository;
+import com.example.toDoList.model.UserEntity;
+import com.example.toDoList.repositorie.UserRepository;
 import com.example.toDoList.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

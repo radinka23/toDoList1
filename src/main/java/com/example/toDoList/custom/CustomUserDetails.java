@@ -1,7 +1,7 @@
-package com.example.toDoList.Custom;
+package com.example.toDoList.custom;
 
 
-import com.example.toDoList.Model.UserEntity;
+import com.example.toDoList.model.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

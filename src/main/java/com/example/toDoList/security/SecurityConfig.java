@@ -1,6 +1,6 @@
-package com.example.toDoList.Security;
+package com.example.toDoList.security;
 
-import com.example.toDoList.Custom.CustomUserDetailsService;
+import com.example.toDoList.custom.CustomUserDetailsService;
 
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;

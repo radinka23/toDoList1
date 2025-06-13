@@ -1,4 +1,4 @@
-package com.example.toDoList.Controllers;
+package com.example.toDoList.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
