@@ -1,6 +1,6 @@
-package com.example.toDoList.security;
+package com.example.toDoList.Security;
 
-import com.example.toDoList.custom.CustomUserDetailsService;
+import com.example.toDoList.Custom.CustomUserDetailsService;
 
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -60,7 +60,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/register", "/"))
                 .authorizeHttpRequests(auth -> auth
                         // Allow CSS, JS, Images & Public Pages
-                        .requestMatchers( "/","/register", "/login", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers( "/","/register", "/login", "/welcome", "/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -83,7 +83,7 @@ public class SecurityConfig {
                         .maximumSessions(1)
                         .maxSessionsPreventsLogin(false)
                         .expiredUrl("/login?expired")
-                        .sessionRegistry(sessionRegistry())  // <-- This is crucial
+                        .sessionRegistry(sessionRegistry())
 )
 ;
 

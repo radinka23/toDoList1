@@ -1,9 +1,9 @@
-package com.example.toDoList.controller;
+package com.example.toDoList.Controllers;
 
 import java.util.Optional;
 
-import com.example.toDoList.model.UserEntity;
-import com.example.toDoList.service.UserService;
+import com.example.toDoList.Model.UserEntity;
+import com.example.toDoList.Services.UserService;
 
 import com.example.toDoList.DTO.UserDTO;
 import org.springframework.stereotype.Controller;

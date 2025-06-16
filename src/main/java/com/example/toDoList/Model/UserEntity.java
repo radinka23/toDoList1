@@ -1,4 +1,4 @@
-package com.example.toDoList.model;
+package com.example.toDoList.Model;
 
 import jakarta.persistence.*;
 

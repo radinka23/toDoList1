@@ -1,4 +1,4 @@
-package com.example.toDoList.controller;
+package com.example.toDoList.Controllers;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,13 +12,11 @@ public class HomeController {
     public String homeRedirectIfAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        // Ако потребителят е логнат (не е анонимен)
+        // Ако потребителят е логнат
         if (authentication != null && authentication.isAuthenticated()
                 && !authentication.getPrincipal().equals("anonymousUser")) {
             return "redirect:/todos";
         }
-
-        // Показваме началната страница (например welcome.html)
         return "welcome";
     }
 }

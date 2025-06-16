@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Edit Task</title>
-  <style>
-    body {
+body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         height: 100vh;
         margin: 0;
@@ -88,18 +82,3 @@
     ::placeholder {
         color: #bbb;
     }
-  </style>
-</head>
-<body>
-<div class="form-container">
-  <h2>Edit Task</h2>
-  <form th:action="@{/todos/update/{id}(id=${item.id})}" th:object="${item}" method="post">
-    <input type="text" th:field="*{title}" placeholder="Title" required />
-    <input type="text" th:field="*{description}" placeholder="Description" />
-    <label for="dueDate">Due Date:</label>
-    <input id="dueDate" type="datetime-local" th:field="*{dueDate}" />
-    <button type="submit">Save Changes</button>
-  </form>
-</div>
-</body>
-</html>

@@ -1,8 +1,8 @@
-package com.example.toDoList.custom;
+package com.example.toDoList.Custom;
 
 
-import com.example.toDoList.model.UserEntity;
-import com.example.toDoList.repositorie.UserRepository;
+import com.example.toDoList.Model.UserEntity;
+import com.example.toDoList.Repositories.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

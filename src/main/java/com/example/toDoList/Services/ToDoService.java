@@ -1,8 +1,8 @@
-package com.example.toDoList.service;
+package com.example.toDoList.Services;
 
-import com.example.toDoList.model.ItemEntity;
-import com.example.toDoList.model.UserEntity;
-import com.example.toDoList.repositorie.ItemRepository;
+import com.example.toDoList.Model.ItemEntity;
+import com.example.toDoList.Model.UserEntity;
+import com.example.toDoList.Repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

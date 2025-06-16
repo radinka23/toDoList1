@@ -1,7 +1,7 @@
-package com.example.toDoList.repositorie;
+package com.example.toDoList.Repositories;
 
-import com.example.toDoList.model.ItemEntity;
-import com.example.toDoList.model.UserEntity;
+import com.example.toDoList.Model.ItemEntity;
+import com.example.toDoList.Model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

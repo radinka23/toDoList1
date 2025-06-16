@@ -1,9 +1,9 @@
-package com.example.toDoList.controller;
+package com.example.toDoList.Controllers;
 
-import com.example.toDoList.model.ItemEntity;
-import com.example.toDoList.model.UserEntity;
-import com.example.toDoList.repositorie.UserRepository;
-import com.example.toDoList.service.ToDoService;
+import com.example.toDoList.Model.ItemEntity;
+import com.example.toDoList.Model.UserEntity;
+import com.example.toDoList.Repositories.UserRepository;
+import com.example.toDoList.Services.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,8 +1,8 @@
-package com.example.toDoList.service;
+package com.example.toDoList.Services;
 
 
-import com.example.toDoList.model.UserEntity;
-import com.example.toDoList.repositorie.UserRepository;
+import com.example.toDoList.Model.UserEntity;
+import com.example.toDoList.Repositories.UserRepository;
 import com.example.toDoList.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
         super();

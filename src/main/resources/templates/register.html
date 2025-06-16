@@ -21,12 +21,10 @@
 
     <h2>Register</h2>
 
-    <!-- Success message -->
     <div th:if="${param.success}" style="color: green; margin-bottom: 10px;">
         Registration successful! <a th:href="@{/login}">Login here</a>.
     </div>
 
-    <!-- Error message if user exists -->
     <div th:if="${Userexist}" style="color: red; margin-bottom: 10px;">
         Username already exists. Please choose another.
     </div>
